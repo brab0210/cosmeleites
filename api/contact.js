@@ -1,15 +1,28 @@
-// api/contact.js
-export default async function handler(req, res) {
-  // Solo aceptar POST
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, subject, message } = req.body || {};
+  // Manejo seguro del body
+  let body = req.body;
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch (e) {}
+  }
 
-  // Validación básica del lado del servidor
+  const { name, email, subject, message } = body || {};
+
   if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Missing required fields' });
+    return res.status(400).json({ error: 'Faltan campos obligatorios' });
+  }
+
+  const apiKey = process.env.WEB3FORMS_KEY;
+
+  // Si la variable no está configurada en Vercel, tiramos un error claro
+  if (!apiKey) {
+    console.error('ERROR: Falta la variable WEB3FORMS_KEY en Vercel');
+    return res.status(500).json({ error: 'Error de configuración del servidor' });
   }
 
   try {
@@ -20,18 +33,18 @@ export default async function handler(req, res) {
         Accept: 'application/json',
       },
       body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_KEY, // ← key secreta, nunca llega al cliente
+        access_key: apiKey,
         name,
         email,
         subject: subject || 'Contacto desde la web',
         message,
-        from_name: 'Oscar Leites — Web',
       }),
     });
 
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (err) {
-    return res.status(500).json({ error: 'Server error' });
+    console.error('ERROR conectando a Web3Forms:', err);
+    return res.status(500).json({ error: 'Error interno de servidor' });
   }
-}
+};

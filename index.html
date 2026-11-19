@@ -673,8 +673,8 @@
         </div>
         <form
           id="contactForm"
-          action="https://formspree.io/f/TU_FORM_ID"
-          method="POST">
+          method="POST"
+          novalidate>
           <div class="field">
             <label data-i18n="form.name"></label
             ><input
@@ -776,158 +776,170 @@
     </footer>
 
     <script>
-      /* ================== TRADUCCIONES ================== */
-      const I18N = {
-       es:{
-        "nav.home":"Inicio","nav.about":"Sobre mí","nav.content":"Contenido","nav.services":"Servicios","nav.analysis":"Análisis","nav.donate":"Donar","nav.contact":"Contacto",
-        "hero.kicker":"Compositor · Creador de contenido musical",
-        "hero.title":"Música que cuenta <span class='grad'>historias épicas</span>",
-        "hero.sub":"Soundtracks para videojuegos, análisis de bandas sonoras legendarias y adaptaciones de temas icónicos a instrumentos de todo el mundo.",
-        "hero.cta1":"Ver YouTube","hero.cta2":"Trabajemos juntos",
-        "hero.cardText":"Mi último short: la música de los videojuegos, explicada y reinventada.",
-        "hero.channelLink":"Ver canal en YouTube →",
-        "about.kicker":"Sobre mí","about.title":"Hola, soy Oscar Leites",
-        "about.p1":"Soy compositor especializado en música para videojuegos, con un enfoque principal en la música orquestal: desde pianos íntimos que respiran nostalgia hasta orquestas completas que hacen epopeya. Pero no me detengo ahí: trabajo en una amplia variedad de géneros para llevar más emoción e inmersión a cada mundo que habito musicalmente.",
-        "about.p2":"En mi canal de YouTube analizo en profundidad bandas sonoras legendarias como la de World of Warcraft, desarmo sus temas capa por capa y reimagino piezas icónicas con instrumentos de distintos países, descubriendo cómo suenan las historias cuando cambian de voz.",
-        "about.stat1":"Proyectos musicales","about.stat2":"Videos publicados","about.stat3":"Idiomas del canal",
-        "content.kicker":"Contenido","content.title":"YouTube & Reels",
-        "content.sub":"Videos, cortos y análisis para fanáticos de la música de videojuegos y de los sonidos del mundo.",
-        "content.c1t":"Análisis musicales","content.c1p":"Desarmo las bandas sonoras de videojuegos icónicos y explico qué las hace inolvidables.",
-        "content.c2t":"Reels & Shorts","content.c2p":"Fragmentos cortos, curiosidades y adaptaciones rápidas para descubrir en minutos.",
-        "content.c3t":"Proyectos especiales","content.c3p":"Series y colaboraciones con otros músicos y creadores de la comunidad.",
-        "services.kicker":"Servicios","services.title":"¿En qué puedo ayudarte?",
-        "services.sub":"Trabajo con estudios, desarrolladores independientes y creadores que buscan música con identidad.",
-        "services.s1t":"Soundtracks para videojuegos","services.s1p":"Música original a medida para tu juego: exploración, combate, ambientación y temas principales.",
-        "services.s2t":"Dirección musical","services.s2p":"Definición del estilo sonoro de tu proyecto y coordinación con el equipo de desarrollo.",
-        "services.s3t":"Arreglos y adaptaciones","services.s3p":"Tomo tu tema favorito y lo transformo con instrumentos de otras culturas.",
-        "services.s4t":"Colaboraciones","services.s4p":"Colaboremos en videos, streams, documentales o proyectos musicales.",
-        "analysis.kicker":"Mi pasión","analysis.title":"Análisis & adaptaciones culturales",
-        "analysis.sub":"Dos líneas de exploración que cruzan toda mi obra: entender la música de los videojuegos y reimaginarla con instrumentos del mundo.",
-        "analysis.a1t":"World of Warcraft y más","analysis.a1p":"Análisis en profundidad de temas legendarios: orquestación, melodía, leitmotivs y por qué nos emocionan.",
-        "analysis.a2t":"Instrumentos del mundo","analysis.a2p":"Un mismo tema interpretado con charango, kora, didgeridoo, flautas andinas y más. La música no tiene fronteras.",
-        "testi.kicker":"Testimonios","testi.title":"Lo que dicen quienes ya trabajaron conmigo","testi.sub":"Palabras de desarrolladores, creadores y clientes que confiaron en mi música.",
-        "testi.t1":"Tener a Cosme Leites en Astra Noctis fue un antes y un después: su música hizo épicas las batallas y mágicos los momentos tranquilos.",
-        "testi.r1":"Desarrollador de Astra Noctis","testi.l1":"Ver en Steam →",
-        "testi.t2":"Para los fans de la música en juegos de estrategia, las composiciones de Oscar son verdaderas obras maestras.",
-        "testi.r2":"Desarrollador de Carthage: Bellum Punicum","testi.l2":"Ver más →",
-        "testi.t3":"A Cosme le importan los juegos para los que compone música. Siempre intenta conectar espiritualmente con el mundo del juego, creando los mejores temas que resuenan con su esencia.",
-        "testi.r3":"Mini Fun Games","testi.l3":"minifun.games →",
-        "testi.t4":"La intuición y precisión de Cosme para combinar la música deseada con las escenas dadas es increíble. La amplia variedad de géneros musicales que puede crear lo convierte en una parte indispensable de nuestra serie de juegos, Leyline Chronicles. Además, sus precios son accesibles para desarrolladores indie, lo cual es una gran ventaja, especialmente para proyectos más pequeños. Lo recomiendo ampliamente para cualquier proyecto que necesite música épica o rock.",
-        "testi.r4":"Desarrollador de Leyline Chronicles",
-        "testi.t5":"¡Cosme siempre está entusiasmado con el proyecto! Trabajar con él es un placer y su trabajo habla por sí solo. Alta calidad y siempre en sintonía con la temática.",
-        "testi.r5":"Desarrollador de Miuratale",
-        "testi.t6":"Trabajar con Cosme hizo que crear la música para mi juego fuera una experiencia fácil y agradable. Entendió realmente la temática de mi juego y creó pistas que encajan a la perfección. Además de componer excelente música, también fue una valiosa caja de resonancia para las ideas, ayudando a elevar varios aspectos del proyecto.",
-        "testi.r6":"Desarrollador de Einherjar's Ascent",
-        "testi.t7":"Cosme hizo la música para mi juego indie, Hop 'n' Marty. Fue un placer trabajar con él y la música que hizo fue absolutamente fantástica. Fue fácil comunicarle lo que quería y además trabajó rápidamente. Recomiendo mucho trabajar con Oscar.",
-        "testi.r7":"Desarrollador de Hop 'N' Marty",
-        "testi.t8":"Como parte de Twistales Forever After, contratamos los servicios de Cosme para crear las primeras melodías de nuestro juego. Entendió rápidamente nuestras necesidades y entregó hermosas composiciones que pueden escucharse en algunos de los videos del juego. Lo recomendamos ampliamente y esperamos volver a trabajar con su talento en el futuro.",
-        "testi.r8":"CEO de CatOnTree",
-        "donate.kicker":"Apoyá el proyecto","donate.title":"¿Te gusta lo que hago? Invitame un café",
-        "donate.sub":"Tu apoyo me permite seguir creando análisis, adaptaciones y soundtracks. ¡Elegí tu plataforma favorita!",
-        "contact.kicker":"Contacto","contact.title":"Hablemos de tu proyecto",
-        "contact.sub":"Escribime para encargos de música, colaboraciones o consultas. Te responderé a la brevedad.",
-        "contact.replaceMail":"oscarfabianleites@gmail.com",
-        "form.name":"Nombre","form.email":"Email","form.subject":"Motivo","form.subjectPh":"Seleccioná un motivo…",
-        "form.opt1":"Encargo de soundtrack","form.opt2":"Colaboración / prensa","form.opt3":"Clases o consultoría","form.opt4":"Otro",
-        "form.msg":"Mensaje","form.send":"Enviar mensaje",
-        "form.note":"Este formulario usa Formspree (gratis). Creá una cuenta en formspree.io, generá un formulario y reemplazá TU_FORM_ID en el HTML.",
-        "form.ok":"¡Mensaje enviado! Gracias por escribir. Te respondo a la brevedad.",
-        "footer.rights":"© 2026 Oscar Leites. Todos los derechos reservados."
-       },
-       en:{
-        "nav.home":"Home","nav.about":"About","nav.content":"Content","nav.services":"Services","nav.analysis":"Analysis","nav.donate":"Donate","nav.contact":"Contact",
-        "hero.kicker":"Composer · Music content creator",
-        "hero.title":"Music that tells <span class='grad'>epic stories</span>",
-        "hero.sub":"Soundtracks for video games, deep dives into legendary scores, and iconic themes adapted to instruments from around the world.",
-        "hero.cta1":"Watch on YouTube","hero.cta2":"Let's work together",
-        "hero.cardText":"My latest short: video game music, explained and reinvented.",
-        "hero.channelLink":"View channel on YouTube →",
-        "about.kicker":"About me","about.title":"Hi, I'm Oscar Leites",
-        "about.p1":"I'm a composer specializing in music for video games, with a primary focus on orchestral music: from intimate pianos breathing nostalgia to full orchestras crafting pure epic. But I don't stop there — I work across a wide range of genres to bring greater emotion and immersion to every world I inhabit musically.",
-        "about.p2":"On my YouTube channel I deep-dive into legendary soundtracks like World of Warcraft's, deconstruct their themes layer by layer, and reimagine iconic pieces with instruments from different countries, discovering how stories sound when they change their voice.",
-        "about.stat1":"Music projects","about.stat2":"Published videos","about.stat3":"Channel languages",
-        "content.kicker":"Content","content.title":"YouTube & Reels",
-        "content.sub":"Videos, shorts and analysis for fans of game music and world sounds.",
-        "content.c1t":"Music analysis","content.c1p":"I break down iconic game soundtracks and explain what makes them unforgettable.",
-        "content.c2t":"Reels & Shorts","content.c2p":"Short clips, fun facts and quick adaptations you can enjoy in minutes.",
-        "content.c3t":"Special projects","content.c3p":"Series and collabs with other musicians and creators in the community.",
-        "services.kicker":"Services","services.title":"How can I help you?",
-        "services.sub":"I work with studios, indie developers and creators looking for music with identity.",
-        "services.s1t":"Video game soundtracks","services.s1p":"Original custom music for your game: exploration, combat, ambience and main themes.",
-        "services.s2t":"Music direction","services.s2p":"Defining your project's sonic identity and working with the dev team.",
-        "services.s3t":"Arrangements & adaptations","services.s3p":"I take your favorite theme and transform it with instruments from other cultures.",
-        "services.s4t":"Collaborations","services.s4p":"Let's team up on videos, streams, documentaries or music projects.",
-        "analysis.kicker":"My passion","analysis.title":"Analysis & cultural adaptations",
-        "analysis.sub":"Two threads run through all my work: understanding game music and reimagining it with world instruments.",
-        "analysis.a1t":"World of Warcraft & beyond","analysis.a1p":"In-depth analysis of legendary themes: orchestration, melody, leitmotifs and why they move us.",
-        "analysis.a2t":"World instruments","analysis.a2p":"One theme played on charango, kora, didgeridoo, Andean flutes and more. Music has no borders.",
-        "testi.kicker":"Testimonials","testi.title":"What clients say about working with me","testi.sub":"Words from developers, creators and clients who trusted my music.",
-        "testi.t1":"Having Cosme Leites on Astra Noctis was a game-changer: his music made the battles epic and the quiet moments magical.",
-        "testi.r1":"Dev of Astra Noctis","testi.l1":"View on Steam →",
-        "testi.t2":"For fans of music in strategy games, Oscar's compositions are true masterpieces.",
-        "testi.r2":"Dev of Carthage: Bellum Punicum","testi.l2":"View more →",
-        "testi.t3":"Cosme cares about the games he composes music for. He always tries to spiritually connect with the game world, creating the best tracks that resonate with its essence.",
-        "testi.r3":"Mini Fun Games","testi.l3":"minifun.games →",
-        "testi.t4":"Cosme's intuition and precision in combining the desired music with the given scenes is incredible. The wide range of different music genres he can create makes him an indispensable part of our game series, Leyline Chronicles. His prices are also affordable for indie developers, which is a huge plus, especially for smaller projects. I can highly recommend him for any project that needs epic or rock music.",
-        "testi.r4":"Dev of Leyline Chronicles",
-        "testi.t5":"Cosme is always enthusiastic about the project! Working with him is a pleasure and his work speaks for itself. High quality, and always fitting thematically.",
-        "testi.r5":"Dev of Miuratale",
-        "testi.t6":"Working with Cosme made creating the music for my game an easy and enjoyable experience. He truly understood the theme of my game and crafted tracks that fit perfectly. Beyond composing great music, he also served as a valuable sounding board for ideas, helping to elevate various aspects of the project.",
-        "testi.r6":"Dev of Einherjar's Ascent",
-        "testi.t7":"Cosme did the music for my indie game, Hop 'n' Marty. He was a pleasure to work with and the music he made was absolutely fantastic. It was easy to communicate what I wanted and he worked quickly on it too. I highly recommend working with Oscar.",
-        "testi.r7":"Dev of Hop 'N' Marty",
-        "testi.t8":"As part of Twistales Forever After, we enlisted Cosme's services to create the first melodies for our game. He quickly understood our needs and delivered beautiful compositions that can be heard in some of the game's videos. We highly recommend him and hope to work with his talents again in the future.",
-        "testi.r8":"CEO of CatOnTree",
-        "donate.kicker":"Support the project","donate.title":"Enjoy my work? Buy me a coffee",
-        "donate.sub":"Your support lets me keep creating analysis, adaptations and soundtracks. Pick your favorite platform!",
-        "contact.kicker":"Contact","contact.title":"Let's talk about your project",
-        "contact.sub":"Write me for music commissions, collaborations or questions. I'll reply as soon as possible.",
-        "contact.replaceMail":"oscarfabianleites@gmail.com",
-        "form.name":"Name","form.email":"Email","form.subject":"Subject","form.subjectPh":"Select a subject…",
-        "form.opt1":"Soundtrack commission","form.opt2":"Collaboration / press","form.opt3":"Lessons or consulting","form.opt4":"Other",
-        "form.msg":"Message","form.send":"Send message",
-        "form.note":"This form uses Formspree (free). Create an account at formspree.io, set up a form and replace TU_FORM_ID in the HTML.",
-        "form.ok":"Message sent! Thanks for reaching out. I'll reply soon.",
-        "footer.rights":"© 2026 Oscar Leites. All rights reserved."
-       }
-      };
+            /* ================== TRADUCCIONES ================== */
+            const I18N = {
+             es:{
+              "nav.home":"Inicio","nav.about":"Sobre mí","nav.content":"Contenido","nav.services":"Servicios","nav.analysis":"Análisis","nav.donate":"Donar","nav.contact":"Contacto",
+              "hero.kicker":"Compositor · Creador de contenido musical",
+              "hero.title":"Música que cuenta <span class='grad'>historias épicas</span>",
+              "hero.sub":"Soundtracks para videojuegos, análisis de bandas sonoras legendarias y adaptaciones de temas icónicos a instrumentos de todo el mundo.",
+              "hero.cta1":"Ver YouTube","hero.cta2":"Trabajemos juntos",
+              "hero.cardText":"Mi último short: la música de los videojuegos, explicada y reinventada.",
+              "hero.channelLink":"Ver canal en YouTube →",
+              "about.kicker":"Sobre mí","about.title":"Hola, soy Oscar Leites",
+              "about.p1":"Soy compositor especializado en música para videojuegos, con un enfoque principal en la música orquestal: desde pianos íntimos que respiran nostalgia hasta orquestas completas que hacen epopeya. Pero no me detengo ahí: trabajo en una amplia variedad de géneros para llevar más emoción e inmersión a cada mundo que habito musicalmente.",
+              "about.p2":"En mi canal de YouTube analizo en profundidad bandas sonoras legendarias como la de World of Warcraft, desarmo sus temas capa por capa y reimagino piezas icónicas con instrumentos de distintos países, descubriendo cómo suenan las historias cuando cambian de voz.",
+              "about.stat1":"Proyectos musicales","about.stat2":"Videos publicados","about.stat3":"Idiomas del canal",
+              "content.kicker":"Contenido","content.title":"YouTube & Reels",
+              "content.sub":"Videos, cortos y análisis para fanáticos de la música de videojuegos y de los sonidos del mundo.",
+              "content.c1t":"Análisis musicales","content.c1p":"Desarmo las bandas sonoras de videojuegos icónicos y explico qué las hace inolvidables.",
+              "content.c2t":"Reels & Shorts","content.c2p":"Fragmentos cortos, curiosidades y adaptaciones rápidas para descubrir en minutos.",
+              "content.c3t":"Proyectos especiales","content.c3p":"Series y colaboraciones con otros músicos y creadores de la comunidad.",
+              "services.kicker":"Servicios","services.title":"¿En qué puedo ayudarte?",
+              "services.sub":"Trabajo con estudios, desarrolladores independientes y creadores que buscan música con identidad.",
+              "services.s1t":"Soundtracks para videojuegos","services.s1p":"Música original a medida para tu juego: exploración, combate, ambientación y temas principales.",
+              "services.s2t":"Dirección musical","services.s2p":"Definición del estilo sonoro de tu proyecto y coordinación con el equipo de desarrollo.",
+              "services.s3t":"Arreglos y adaptaciones","services.s3p":"Tomo tu tema favorito y lo transformo con instrumentos de otras culturas.",
+              "services.s4t":"Colaboraciones","services.s4p":"Colaboremos en videos, streams, documentales o proyectos musicales.",
+              "analysis.kicker":"Mi pasión","analysis.title":"Análisis & adaptaciones culturales",
+              "analysis.sub":"Dos líneas de exploración que cruzan toda mi obra: entender la música de los videojuegos y reimaginarla con instrumentos del mundo.",
+              "analysis.a1t":"World of Warcraft y más","analysis.a1p":"Análisis en profundidad de temas legendarios: orquestación, melodía, leitmotivs y por qué nos emocionan.",
+              "analysis.a2t":"Instrumentos del mundo","analysis.a2p":"Un mismo tema interpretado con charango, kora, didgeridoo, flautas andinas y más. La música no tiene fronteras.",
+              "testi.kicker":"Testimonios","testi.title":"Lo que dicen quienes ya trabajaron conmigo","testi.sub":"Palabras de desarrolladores, creadores y clientes que confiaron en mi música.",
+              "testi.t1":"Tener a Cosme Leites en Astra Noctis fue un antes y un después: su música hizo épicas las batallas y mágicos los momentos tranquilos.",
+              "testi.r1":"Desarrollador de Astra Noctis","testi.l1":"Ver en Steam →",
+              "testi.t2":"Para los fans de la música en juegos de estrategia, las composiciones de Oscar son verdaderas obras maestras.",
+              "testi.r2":"Desarrollador de Carthage: Bellum Punicum","testi.l2":"Ver más →",
+              "testi.t3":"A Cosme le importan los juegos para los que compone música. Siempre intenta conectar espiritualmente con el mundo del juego, creando los mejores temas que resuenan con su esencia.",
+              "testi.r3":"Mini Fun Games","testi.l3":"minifun.games →",
+              "testi.t4":"La intuición y precisión de Cosme para combinar la música deseada con las escenas dadas es increíble. La amplia variedad de géneros musicales que puede crear lo convierte en una parte indispensable de nuestra serie de juegos, Leyline Chronicles. Además, sus precios son accesibles para desarrolladores indie, lo cual es una gran ventaja, especialmente para proyectos más pequeños. Lo recomiendo ampliamente para cualquier proyecto que necesite música épica o rock.",
+              "testi.r4":"Desarrollador de Leyline Chronicles",
+              "testi.t5":"¡Cosme siempre está entusiasmado con el proyecto! Trabajar con él es un placer y su trabajo habla por sí solo. Alta calidad y siempre en sintonía con la temática.",
+              "testi.r5":"Desarrollador de Miuratale",
+              "testi.t6":"Trabajar con Cosme hizo que crear la música para mi juego fuera una experiencia fácil y agradable. Entendió realmente la temática de mi juego y creó pistas que encajan a la perfección. Además de componer excelente música, también fue una valiosa caja de resonancia para las ideas, ayudando a elevar varios aspectos del proyecto.",
+              "testi.r6":"Desarrollador de Einherjar's Ascent",
+              "testi.t7":"Cosme hizo la música para mi juego indie, Hop 'n' Marty. Fue un placer trabajar con él y la música que hizo fue absolutamente fantástica. Fue fácil comunicarle lo que quería y además trabajó rápidamente. Recomiendo mucho trabajar con Oscar.",
+              "testi.r7":"Desarrollador de Hop 'N' Marty",
+              "testi.t8":"Como parte de Twistales Forever After, contratamos los servicios de Cosme para crear las primeras melodías de nuestro juego. Entendió rápidamente nuestras necesidades y entregó hermosas composiciones que pueden escucharse en algunos de los videos del juego. Lo recomendamos ampliamente y esperamos volver a trabajar con su talento en el futuro.",
+              "testi.r8":"CEO de CatOnTree",
+              "donate.kicker":"Apoyá el proyecto","donate.title":"¿Te gusta lo que hago? Invitame un café",
+              "donate.sub":"Tu apoyo me permite seguir creando análisis, adaptaciones y soundtracks. ¡Elegí tu plataforma favorita!",
+              "contact.kicker":"Contacto","contact.title":"Hablemos de tu proyecto",
+              "contact.sub":"Escribime para encargos de música, colaboraciones o consultas. Te responderé a la brevedad.",
+              "contact.replaceMail":"oscarfabianleites@gmail.com",
+              "form.name":"Nombre","form.email":"Email","form.subject":"Motivo","form.subjectPh":"Seleccioná un motivo…",
+              "form.opt1":"Encargo de soundtrack","form.opt2":"Colaboración / prensa","form.opt3":"Clases o consultoría","form.opt4":"Otro",
+              "form.msg":"Mensaje","form.send":"Enviar mensaje",
+              "form.note":"Este formulario usa Formspree (gratis). Creá una cuenta en formspree.io, generá un formulario y reemplazá TU_FORM_ID en el HTML.",
+              "form.ok":"¡Mensaje enviado! Gracias por escribir. Te respondo a la brevedad.",
+              "footer.rights":"© 2026 Oscar Leites. Todos los derechos reservados."
+             },
+             en:{
+              "nav.home":"Home","nav.about":"About","nav.content":"Content","nav.services":"Services","nav.analysis":"Analysis","nav.donate":"Donate","nav.contact":"Contact",
+              "hero.kicker":"Composer · Music content creator",
+              "hero.title":"Music that tells <span class='grad'>epic stories</span>",
+              "hero.sub":"Soundtracks for video games, deep dives into legendary scores, and iconic themes adapted to instruments from around the world.",
+              "hero.cta1":"Watch on YouTube","hero.cta2":"Let's work together",
+              "hero.cardText":"My latest short: video game music, explained and reinvented.",
+              "hero.channelLink":"View channel on YouTube →",
+              "about.kicker":"About me","about.title":"Hi, I'm Oscar Leites",
+              "about.p1":"I'm a composer specializing in music for video games, with a primary focus on orchestral music: from intimate pianos breathing nostalgia to full orchestras crafting pure epic. But I don't stop there — I work across a wide range of genres to bring greater emotion and immersion to every world I inhabit musically.",
+              "about.p2":"On my YouTube channel I deep-dive into legendary soundtracks like World of Warcraft's, deconstruct their themes layer by layer, and reimagine iconic pieces with instruments from different countries, discovering how stories sound when they change their voice.",
+              "about.stat1":"Music projects","about.stat2":"Published videos","about.stat3":"Channel languages",
+              "content.kicker":"Content","content.title":"YouTube & Reels",
+              "content.sub":"Videos, shorts and analysis for fans of game music and world sounds.",
+              "content.c1t":"Music analysis","content.c1p":"I break down iconic game soundtracks and explain what makes them unforgettable.",
+              "content.c2t":"Reels & Shorts","content.c2p":"Short clips, fun facts and quick adaptations you can enjoy in minutes.",
+              "content.c3t":"Special projects","content.c3p":"Series and collabs with other musicians and creators in the community.",
+              "services.kicker":"Services","services.title":"How can I help you?",
+              "services.sub":"I work with studios, indie developers and creators looking for music with identity.",
+              "services.s1t":"Video game soundtracks","services.s1p":"Original custom music for your game: exploration, combat, ambience and main themes.",
+              "services.s2t":"Music direction","services.s2p":"Defining your project's sonic identity and working with the dev team.",
+              "services.s3t":"Arrangements & adaptations","services.s3p":"I take your favorite theme and transform it with instruments from other cultures.",
+              "services.s4t":"Collaborations","services.s4p":"Let's team up on videos, streams, documentaries or music projects.",
+              "analysis.kicker":"My passion","analysis.title":"Analysis & cultural adaptations",
+              "analysis.sub":"Two threads run through all my work: understanding game music and reimagining it with world instruments.",
+              "analysis.a1t":"World of Warcraft & beyond","analysis.a1p":"In-depth analysis of legendary themes: orchestration, melody, leitmotifs and why they move us.",
+              "analysis.a2t":"World instruments","analysis.a2p":"One theme played on charango, kora, didgeridoo, Andean flutes and more. Music has no borders.",
+              "testi.kicker":"Testimonials","testi.title":"What clients say about working with me","testi.sub":"Words from developers, creators and clients who trusted my music.",
+              "testi.t1":"Having Cosme Leites on Astra Noctis was a game-changer: his music made the battles epic and the quiet moments magical.",
+              "testi.r1":"Dev of Astra Noctis","testi.l1":"View on Steam →",
+              "testi.t2":"For fans of music in strategy games, Oscar's compositions are true masterpieces.",
+              "testi.r2":"Dev of Carthage: Bellum Punicum","testi.l2":"View more →",
+              "testi.t3":"Cosme cares about the games he composes music for. He always tries to spiritually connect with the game world, creating the best tracks that resonate with its essence.",
+              "testi.r3":"Mini Fun Games","testi.l3":"minifun.games →",
+              "testi.t4":"Cosme's intuition and precision in combining the desired music with the given scenes is incredible. The wide range of different music genres he can create makes him an indispensable part of our game series, Leyline Chronicles. His prices are also affordable for indie developers, which is a huge plus, especially for smaller projects. I can highly recommend him for any project that needs epic or rock music.",
+              "testi.r4":"Dev of Leyline Chronicles",
+              "testi.t5":"Cosme is always enthusiastic about the project! Working with him is a pleasure and his work speaks for itself. High quality, and always fitting thematically.",
+              "testi.r5":"Dev of Miuratale",
+              "testi.t6":"Working with Cosme made creating the music for my game an easy and enjoyable experience. He truly understood the theme of my game and crafted tracks that fit perfectly. Beyond composing great music, he also served as a valuable sounding board for ideas, helping to elevate various aspects of the project.",
+              "testi.r6":"Dev of Einherjar's Ascent",
+              "testi.t7":"Cosme did the music for my indie game, Hop 'n' Marty. He was a pleasure to work with and the music he made was absolutely fantastic. It was easy to communicate what I wanted and he worked quickly on it too. I highly recommend working with Oscar.",
+              "testi.r7":"Dev of Hop 'N' Marty",
+              "testi.t8":"As part of Twistales Forever After, we enlisted Cosme's services to create the first melodies for our game. He quickly understood our needs and delivered beautiful compositions that can be heard in some of the game's videos. We highly recommend him and hope to work with his talents again in the future.",
+              "testi.r8":"CEO of CatOnTree",
+              "donate.kicker":"Support the project","donate.title":"Enjoy my work? Buy me a coffee",
+              "donate.sub":"Your support lets me keep creating analysis, adaptations and soundtracks. Pick your favorite platform!",
+              "contact.kicker":"Contact","contact.title":"Let's talk about your project",
+              "contact.sub":"Write me for music commissions, collaborations or questions. I'll reply as soon as possible.",
+              "contact.replaceMail":"oscarfabianleites@gmail.com",
+              "form.name":"Name","form.email":"Email","form.subject":"Subject","form.subjectPh":"Select a subject…",
+              "form.opt1":"Soundtrack commission","form.opt2":"Collaboration / press","form.opt3":"Lessons or consulting","form.opt4":"Other",
+              "form.msg":"Message","form.send":"Send message",
+              "form.note":"This form uses Formspree (free). Create an account at formspree.io, set up a form and replace TU_FORM_ID in the HTML.",
+              "form.ok":"Message sent! Thanks for reaching out. I'll reply soon.",
+              "footer.rights":"© 2026 Oscar Leites. All rights reserved."
+             }
+            };
 
-      /* Idioma por defecto: inglés si el usuario nunca eligió otro */
-      let lang = localStorage.getItem('ol-lang') || 'en';
-      function setLang(l){
-        lang = l; localStorage.setItem('ol-lang', l);
-        document.documentElement.lang = l;
-        document.getElementById('langLabel').textContent = l === 'es' ? 'EN' : 'ES';
-        document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.dataset.i18n; if(I18N[l][k]) el.textContent=I18N[l][k]; });
-        document.querySelectorAll('[data-i18n-html]').forEach(el=>{ const k=el.dataset.i18nHtml; if(I18N[l][k]) el.innerHTML=I18N[l][k]; });
-      }
-      document.getElementById('langBtn').addEventListener('click',()=>setLang(lang==='es'?'en':'es'));
+            /* Idioma por defecto: inglés si el usuario nunca eligió otro */
+            let lang = localStorage.getItem('ol-lang') || 'en';
+            function setLang(l){
+              lang = l; localStorage.setItem('ol-lang', l);
+              document.documentElement.lang = l;
+              document.getElementById('langLabel').textContent = l === 'es' ? 'EN' : 'ES';
+              document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.dataset.i18n; if(I18N[l][k]) el.textContent=I18N[l][k]; });
+              document.querySelectorAll('[data-i18n-html]').forEach(el=>{ const k=el.dataset.i18nHtml; if(I18N[l][k]) el.innerHTML=I18N[l][k]; });
+            }
+            document.getElementById('langBtn').addEventListener('click',()=>setLang(lang==='es'?'en':'es'));
 
-      /* ================== TEMA ================== */
-      let theme = localStorage.getItem('ol-theme') || 'dark';
-      function setTheme(t){
-        theme=t; localStorage.setItem('ol-theme',t);
-        document.documentElement.dataset.theme=t;
-        document.getElementById('themeBtn').textContent = t==='dark' ? '🌙' : '☀️';
-      }
-      document.getElementById('themeBtn').addEventListener('click',()=>setTheme(theme==='dark'?'light':'dark'));
+            /* ================== TEMA ================== */
+            let theme = localStorage.getItem('ol-theme') || 'dark';
+            function setTheme(t){
+              theme=t; localStorage.setItem('ol-theme',t);
+              document.documentElement.dataset.theme=t;
+              document.getElementById('themeBtn').textContent = t==='dark' ? '🌙' : '☀️';
+            }
+            document.getElementById('themeBtn').addEventListener('click',()=>setTheme(theme==='dark'?'light':'dark'));
 
-      /* ================== MENÚ MÓVIL ================== */
-      document.getElementById('burger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
-      document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+            /* ================== MENÚ MÓVIL ================== */
+            document.getElementById('burger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+            document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
 
-      /* ================== FORM (fetch a Formspree, sin recargar) ================== */
-      document.getElementById('contactForm').addEventListener('submit', async e=>{
+            /* ================== FORM (fetch a Formspree, sin recargar) ================== */
+            document.getElementById('contactForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const form=e.target;
-        if(form.action.includes('TU_FORM_ID')){ document.getElementById('formOk').style.display='block'; form.reset(); return; }
-        try{
-          const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
-          if(r.ok){ document.getElementById('formOk').style.display='block'; form.reset(); }
-        }catch(err){ window.location.href='mailto:oscarfabianleites@gmail.com'; }
+        const form = e.target;
+        const data = Object.fromEntries(new FormData(form));
+
+        try {
+          const r = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          if (r.ok) {
+            document.getElementById('formOk').style.display = 'block';
+            form.reset();
+          } else {
+            alert('Hubo un problema. Probá de nuevo en unos minutos.');
+          }
+        } catch (err) {
+          window.location.href = 'mailto:oscarfabianleites@gmail.com';
+        }
       });
 
-      setTheme(theme); setLang(lang);
+            setTheme(theme); setLang(lang);
     </script>
   </body>
 </html>

@@ -141,14 +141,29 @@
         <p class="lead" data-i18n="content.sub"></p>
       </div>
 
+      <div class="video-filters reveal">
+        <button class="filter-btn active" data-filter="all">
+          <span data-i18n="content.filterAll"></span>
+        </button>
+        <button class="filter-btn" data-filter="main">
+          <span data-i18n="content.filterMain"></span>
+        </button>
+        <button class="filter-btn" data-filter="battle">
+          <span data-i18n="content.filterBattle"></span>
+        </button>
+        <button class="filter-btn" data-filter="ambient">
+          <span data-i18n="content.filterAmbient"></span>
+        </button>
+      </div>
+
       <div class="video-grid" id="videoGrid">
 
-        <!-- Video 1 -->
-        <article class="video-card reveal" data-video-id="9xot5xiCI0E" data-title-es="Blaster Vision — Tema Principal"
+        <!-- Video 1 (Featured) -->
+        <article class="video-card video-card-featured reveal" data-category="main" data-video-id="9xot5xiCI0E" data-title-es="Blaster Vision — Tema Principal"
           data-title-en="Blaster Vision — Main Theme" data-cat-es="Tema principal" data-cat-en="Main Theme">
           <div class="video-thumb-wrap">
             <img class="video-thumb" src="https://i.ytimg.com/vi/9xot5xiCI0E/hqdefault.jpg"
-              alt="Astra Noctis — Main Theme" loading="lazy" />
+              alt="Blaster Vision — Main Theme" loading="lazy" />
             <div class="video-overlay" aria-hidden="true">
               <button class="play-btn" aria-label="Play Blaster Vision — Main Theme">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"
@@ -157,6 +172,7 @@
                 </svg>
               </button>
             </div>
+            <span class="featured-badge" data-i18n="content.featuredBadge">Destacado</span>
           </div>
           <div class="video-info">
             <span class="video-cat video-cat-label"></span>
@@ -164,8 +180,8 @@
           </div>
         </article>
 
-        <!-- Video 2 -->
-        <article class="video-card reveal" data-video-id="ikIMh9CqUlg"
+        <!-- Video 2 (Featured) -->
+        <article class="video-card video-card-featured reveal" data-category="battle" data-video-id="ikIMh9CqUlg"
           data-title-es="Twistales, Forever After — Música de batalla"
           data-title-en="Twistales, Forever After — Battle Music" data-cat-es="Banda sonora de combate"
           data-cat-en="Battle Soundtrack">
@@ -180,6 +196,7 @@
                 </svg>
               </button>
             </div>
+            <span class="featured-badge" data-i18n="content.featuredBadge">Destacado</span>
           </div>
           <div class="video-info">
             <span class="video-cat video-cat-label"></span>
@@ -188,7 +205,7 @@
         </article>
 
         <!-- Video 3 -->
-        <article class="video-card reveal" data-video-id="AovtryHCaFI"
+        <article class="video-card reveal" data-category="battle" data-video-id="AovtryHCaFI"
           data-title-es="Gates of Gaul - Carthage: Bellum Punicum — Tema de combate"
           data-title-en="Gates of Gaul - Carthage: Bellum Punicum — Combat Theme" data-cat-es="Tema de combate"
           data-cat-en="Combat Theme">
@@ -211,7 +228,7 @@
         </article>
 
         <!-- Video 4 -->
-        <article class="video-card reveal" data-video-id="eF4KIQBRqQs" data-title-es="Towerful Defense — Banda sonora"
+        <article class="video-card reveal" data-category="main" data-video-id="eF4KIQBRqQs" data-title-es="Towerful Defense — Banda sonora"
           data-title-en="Towerful Defense — Soundtrack" data-cat-es="Banda sonora" data-cat-en="Soundtrack">
           <div class="video-thumb-wrap">
             <img class="video-thumb" src="https://i.ytimg.com/vi/eF4KIQBRqQs/hqdefault.jpg"
@@ -232,15 +249,16 @@
         </article>
 
         <!-- Video 5 -->
-        <article class="video-card reveal" data-video-id="T53A11DM3V8" data-title-es="
-ASTRA NOCTIS - Dat Vitam Lapidi — Tema de exploración" data-title-en="
-ASTRA NOCTIS - Dat Vitam Lapidi — Exploration Theme" data-cat-es="Tema de exploración" data-cat-en="Exploration Theme">
+        <article class="video-card reveal" data-category="ambient" data-video-id="T53A11DM3V8"
+          data-title-es="ASTRA NOCTIS - Dat Vitam Lapidi — Tema de exploración"
+          data-title-en="ASTRA NOCTIS - Dat Vitam Lapidi — Exploration Theme"
+          data-cat-es="Tema de exploración"
+          data-cat-en="Exploration Theme">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="https://i.ytimg.com/vi/T53A11DM3V8/hqdefault.jpg" alt="
-ASTRA NOCTIS - Dat Vitam Lapidi — Exploration Theme" loading="lazy" />
+            <img class="video-thumb" src="https://i.ytimg.com/vi/T53A11DM3V8/hqdefault.jpg"
+              alt="ASTRA NOCTIS - Dat Vitam Lapidi — Exploration Theme" loading="lazy" />
             <div class="video-overlay" aria-hidden="true">
-              <button class="play-btn" aria-label="Play 
-ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
+              <button class="play-btn" aria-label="Play ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"
                   aria-hidden="true">
                   <polygon points="6 3 20 12 6 21 6 3" />
@@ -255,7 +273,7 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
         </article>
 
         <!-- Video 6 -->
-        <article class="video-card reveal" data-video-id="vyLTReKVYhg"
+        <article class="video-card reveal" data-category="battle" data-video-id="vyLTReKVYhg"
           data-title-es="Preparations - Carthage: Bellum Punicum — Tema de combate"
           data-title-en="Preparations - Carthage: Bellum Punicum — Combat Theme" data-cat-es="Tema de combate"
           data-cat-en="Combat Theme">
@@ -278,7 +296,7 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
         </article>
 
         <!-- Video 7 -->
-        <article class="video-card reveal" data-video-id="5gBoesIiblM"
+        <article class="video-card reveal" data-category="main" data-video-id="5gBoesIiblM"
           data-title-es="Snowy - Rain of Snowballs — Tema principal"
           data-title-en="Snowy - Rain of Snowballs — Main Theme" data-cat-es="Tema principal" data-cat-en="Main Theme">
           <div class="video-thumb-wrap">
@@ -300,7 +318,7 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
         </article>
 
         <!-- Video 8 -->
-        <article class="video-card reveal" data-video-id="pbU4yRYZhe4"
+        <article class="video-card reveal" data-category="ambient" data-video-id="pbU4yRYZhe4"
           data-title-es="Infierno Sin Invierno — Tema principal" data-title-en="Infierno Sin Invierno — Main Theme"
           data-cat-es="Tema principal" data-cat-en="Main Theme">
           <div class="video-thumb-wrap">
@@ -322,7 +340,7 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
         </article>
 
         <!-- Video 9 -->
-        <article class="video-card reveal" data-video-id="SBLdaLqJd6E" data-title-es="Deterrence — Tema principal"
+        <article class="video-card reveal" data-category="main" data-video-id="SBLdaLqJd6E" data-title-es="Deterrence — Tema principal"
           data-title-en="Deterrence — Main Theme" data-cat-es="Tema principal" data-cat-en="Main Theme">
           <div class="video-thumb-wrap">
             <img class="video-thumb" src="https://i.ytimg.com/vi/SBLdaLqJd6E/hqdefault.jpg"
@@ -868,6 +886,11 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
         "content.title": "COMPOSICIONES SELECCIONADAS",
         "content.sub": "Una selección de música original para videojuegos.",
         "content.channelBtn": "Ver canal completo en YouTube",
+        "content.featuredBadge": "Destacado",
+        "content.filterAll": "Todos",
+        "content.filterMain": "Temas principales",
+        "content.filterBattle": "Batalla / Combate",
+        "content.filterAmbient": "Exploración / Ambiente",
 
         "commissions.kicker": "Encargos",
         "commissions.title": "ENCARGOS",
@@ -942,6 +965,11 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
         "content.title": "SELECTED COMPOSITIONS",
         "content.sub": "A selection of original music for video games.",
         "content.channelBtn": "View full channel on YouTube",
+        "content.featuredBadge": "Featured",
+        "content.filterAll": "All",
+        "content.filterMain": "Main Themes",
+        "content.filterBattle": "Battle / Combat",
+        "content.filterAmbient": "Exploration / Ambient",
 
         "commissions.kicker": "Commissions",
         "commissions.title": "COMMISSIONS",
@@ -1119,6 +1147,54 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
     });
 
     /* ============================================================
+       VIDEO FILTERS
+    ============================================================ */
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const videoCards = document.querySelectorAll('.video-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        videoCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('filtered-out');
+          } else {
+            card.classList.add('filtered-out');
+          }
+        });
+      });
+    });
+
+    /* ============================================================
+       SCROLLSPY (ACTIVE NAV LINK)
+    ============================================================ */
+    const sections = document.querySelectorAll('header[id], section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY + 120;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollPos >= top && scrollPos < top + height) {
+          navAnchors.forEach(a => {
+            if (a.getAttribute('href') === `#${id}`) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    /* ============================================================
        CONTACT FORM
     ============================================================ */
     document.getElementById('contactForm').addEventListener('submit', async function (e) {
@@ -1127,11 +1203,18 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
       const btn = form.querySelector('button[type="submit"]');
       const formOk = document.getElementById('formOk');
       const formErr = document.getElementById('formErr');
+      const subjectSelect = document.getElementById('cf-subject');
+      const hiddenSubject = form.querySelector('input[name="subject"]');
+
+      if (subjectSelect && subjectSelect.value && hiddenSubject) {
+        const optText = subjectSelect.options[subjectSelect.selectedIndex].text;
+        hiddenSubject.value = `[Portfolio] ${optText} - ${form.querySelector('#cf-name').value || 'New Inquiry'}`;
+      }
 
       formOk.style.display = 'none';
       formErr.style.display = 'none';
       btn.disabled = true;
-      btn.textContent = '…';
+      btn.textContent = lang === 'es' ? 'Enviando mensaje…' : 'Sending message…';
 
       try {
         const formData = new FormData(form);
@@ -1145,7 +1228,7 @@ ASTRA NOCTIS - Dat Vitam Lapidi Exploration Theme">
           formOk.style.display = 'block';
           form.reset();
         } else {
-          formErr.textContent = result.message || 'Error sending message.';
+          formErr.textContent = result.message || (lang === 'es' ? 'Error al enviar.' : 'Error sending message.');
           formErr.style.display = 'block';
         }
       } catch {

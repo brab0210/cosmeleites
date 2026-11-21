@@ -332,11 +332,13 @@ nav.scrolled {
     transition: width 0.25s ease;
 }
 
-.nav-links a:hover {
-    color: var(--text);
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold-light);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
     width: 100%;
 }
 
@@ -573,6 +575,38 @@ nav.scrolled {
 }
 
 /* ===================== VIDEO GALLERY ======================== */
+.video-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.filter-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    color: var(--text);
+    border-color: var(--gold-border);
+}
+
+.filter-btn.active {
+    background: var(--gold-dim);
+    color: var(--gold-light);
+    border-color: var(--gold);
+    box-shadow: 0 0 16px var(--gold-glow);
+}
+
 .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -585,13 +619,46 @@ nav.scrolled {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+}
+
+.video-card.filtered-out {
+    display: none;
 }
 
 .video-card:hover {
     transform: translateY(-6px);
     border-color: var(--gold-border);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--gold-border);
+}
+
+/* Featured Tracks styling */
+.video-card-featured {
+    border-color: rgba(198, 164, 92, 0.35);
+    background: linear-gradient(180deg, rgba(198, 164, 92, 0.04) 0%, var(--card) 100%);
+}
+
+.video-card-featured:hover {
+    border-color: var(--gold);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), 0 0 24px var(--gold-glow);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(11, 11, 13, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--gold-border);
+    color: var(--gold-light);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .video-thumb-wrap {
@@ -811,6 +878,7 @@ nav.scrolled {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    align-items: stretch;
 }
 
 .testi-card {
@@ -821,6 +889,7 @@ nav.scrolled {
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .testi-card:hover {
@@ -1152,7 +1221,8 @@ footer {
 
     .workflow-timeline {
         grid-template-columns: repeat(2, 1fr);
-        gap: 36px;
+        gap: 40px 24px;
+        position: relative;
     }
 
     .workflow-timeline::before {
@@ -1160,7 +1230,15 @@ footer {
     }
 
     .workflow-step {
-        padding: 0 16px;
+        padding: 24px 20px;
+        background: rgba(24, 24, 29, 0.4);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition: border-color 0.2s ease;
+    }
+
+    .workflow-step:hover {
+        border-color: var(--gold-border);
     }
 
     .testi-grid {

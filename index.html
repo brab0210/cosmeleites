@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosme Leites — Video Game Composer</title>
 
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+  <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <meta name="google-site-verification" content="VZocfyTHxYES2InF1xM52UAYiJ-GLFgbHTSyxYzHS5Q" />
 
@@ -24,6 +29,44 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://www.cosmeleites.com/" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.cosmeleites.com/#website",
+        "url": "https://www.cosmeleites.com/",
+        "name": "Cosme Leites",
+        "description": "Original soundtracks, cinematic themes and immersive audio experiences for video games.",
+        "publisher": {
+          "@id": "https://www.cosmeleites.com/#person"
+        },
+        "inLanguage": ["en", "es"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.cosmeleites.com/#person",
+        "name": "Cosme Leites",
+        "jobTitle": "Video Game Composer",
+        "url": "https://www.cosmeleites.com/",
+        "image": "https://www.cosmeleites.com/oscar-perfil.png",
+        "description": "Composer specializing in original video game soundtracks, cinematic themes, orchestral music, and ready-to-use audio assets for indie developers.",
+        "sameAs": [
+          "https://cosmeleites.itch.io/",
+          "https://www.youtube.com/@CosmeLeites",
+          "https://open.spotify.com/intl-es/artist/451SY66RRjHVYNaThGySjw",
+          "https://discord.com/users/801956093504258048",
+          "https://x.com/oscar_leites",
+          "https://instagram.com/cosmeleites",
+          "https://www.tiktok.com/@cosmeleites"
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,6 +95,7 @@
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#sobre" data-i18n="nav.about"></a></li>
         <li><a href="#contenido" data-i18n="nav.content"></a></li>
+        <li><a href="#music-packs" data-i18n="nav.musicPacks" class="nav-link-highlight"></a></li>
         <li><a href="#commissions" data-i18n="nav.commissions"></a></li>
         <li><a href="#testimonios" data-i18n="nav.testimonials"></a></li>
         <li><a href="#contacto" data-i18n="nav.contact"></a></li>
@@ -102,7 +146,23 @@
       <p class="hero-sub reveal reveal-delay-3" data-i18n="hero.sub"></p>
       <div class="cta-row reveal reveal-delay-4">
         <a class="btn btn-primary" href="#contenido" data-i18n="hero.cta1"></a>
-        <a class="btn btn-ghost" href="#contacto" data-i18n="hero.cta2"></a>
+        <a class="btn btn-itch" href="https://cosmeleites.itch.io/" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 12h4m4 0h4m-12 3h16M2 6l3 2v6a7 7 0 0 0 14 0V8l3-2-2-2H4L2 6Z" />
+            <circle cx="9" cy="11" r="1" />
+            <circle cx="15" cy="11" r="1" />
+          </svg>
+          <span data-i18n="hero.ctaPacks"></span>
+          <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
+        <!--  <a class="btn btn-ghost" href="#contacto" data-i18n="hero.cta2"></a> -->
       </div>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true">
@@ -117,7 +177,7 @@
   <section id="sobre">
     <div class="container about-grid">
       <div class="about-img-wrap reveal">
-        <img src="./img/oscar-perfil.png" alt="Oscar Cosme Leites — Video Game Composer" loading="lazy" />
+        <img src="/oscar-perfil.png" alt="Oscar Cosme Leites — Video Game Composer" loading="lazy" />
       </div>
       <div>
         <span class="kicker reveal" data-i18n="about.kicker"></span>
@@ -382,6 +442,38 @@
           </svg>
           <span data-i18n="content.channelBtn"></span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MUSIC PACKS (ITCH.IO PROMO) ===== -->
+  <section id="music-packs" class="music-packs-section">
+    <div class="container">
+      <div class="music-packs-card reveal">
+        <div class="music-packs-content">
+          <span class="kicker kicker-itch" data-i18n="packs.kicker"></span>
+          <h2 class="music-packs-title" data-i18n="packs.title"></h2>
+          <p class="lead music-packs-desc" data-i18n="packs.desc"></p>
+        </div>
+        <div class="music-packs-action">
+          <a href="https://cosmeleites.itch.io/" target="_blank" rel="noopener noreferrer"
+            class="btn btn-gold btn-lg btn-packs-cta">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 12h4m4 0h4m-12 3h16M2 6l3 2v6a7 7 0 0 0 14 0V8l3-2-2-2H4L2 6Z" />
+              <circle cx="9" cy="11" r="1" />
+              <circle cx="15" cy="11" r="1" />
+            </svg>
+            <span data-i18n="packs.cta"></span>
+            <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -874,6 +966,7 @@
       es: {
         "nav.about": "Sobre mí",
         "nav.content": "Composiciones",
+        "nav.musicPacks": "Music Packs",
         "nav.commissions": "Encargos",
         "nav.testimonials": "Testimonios",
         "nav.contact": "Contacto",
@@ -882,6 +975,7 @@
         "hero.headline": "Música que da vida a los mundos.",
         "hero.sub": "Bandas sonoras originales, temas cinemáticos y experiencias de audio inmersivas para videojuegos.",
         "hero.cta1": "Escuchar música",
+        "hero.ctaPacks": "Explorar Music Packs",
         "hero.cta2": "Trabajemos juntos",
 
         "about.kicker": "Sobre mí",
@@ -900,6 +994,11 @@
         "content.filterMain": "Temas principales",
         "content.filterBattle": "Batalla / Combate",
         "content.filterAmbient": "Exploración / Ambiente",
+
+        "packs.kicker": "DISPONIBLE EN ITCH.IO",
+        "packs.title": "Música lista para usar en tu próximo juego.",
+        "packs.desc": "Descubre paquetes de música original diseñados para aportar atmósfera, emoción e identidad a tus proyectos de videojuegos.",
+        "packs.cta": "VER MUSIC PACKS",
 
         "commissions.kicker": "Encargos",
         "commissions.title": "ENCARGOS",
@@ -953,6 +1052,7 @@
       en: {
         "nav.about": "About",
         "nav.content": "Compositions",
+        "nav.musicPacks": "Music Packs",
         "nav.commissions": "Commissions",
         "nav.testimonials": "Testimonials",
         "nav.contact": "Contact",
@@ -961,6 +1061,7 @@
         "hero.headline": "Music that brings worlds to life.",
         "hero.sub": "Original soundtracks, cinematic themes and immersive audio experiences for video games.",
         "hero.cta1": "Explore my music",
+        "hero.ctaPacks": "Explore Music Packs",
         "hero.cta2": "Get in touch",
 
         "about.kicker": "About me",
@@ -979,6 +1080,11 @@
         "content.filterMain": "Main Themes",
         "content.filterBattle": "Battle / Combat",
         "content.filterAmbient": "Exploration / Ambient",
+
+        "packs.kicker": "AVAILABLE ON ITCH.IO",
+        "packs.title": "Ready-to-use music for your next game.",
+        "packs.desc": "Discover original music packs designed to bring atmosphere, emotion and identity to your game projects.",
+        "packs.cta": "BROWSE MUSIC PACKS",
 
         "commissions.kicker": "Commissions",
         "commissions.title": "COMMISSIONS",

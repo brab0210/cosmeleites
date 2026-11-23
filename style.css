@@ -220,6 +220,33 @@ section {
     box-shadow: 0 6px 20px var(--gold-glow);
 }
 
+.btn-itch {
+    background: rgba(198, 164, 92, 0.12);
+    border-color: var(--gold);
+    color: var(--gold-light);
+    font-weight: 600;
+}
+
+.btn-itch:hover {
+    background: var(--gold);
+    color: #0B0B0D;
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(198, 164, 92, 0.28);
+}
+
+.btn-itch .external-icon,
+.btn-packs-cta .external-icon {
+    opacity: 0.7;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-itch:hover .external-icon,
+.btn-packs-cta:hover .external-icon {
+    transform: translate(2px, -2px);
+    opacity: 1;
+}
+
 .btn-ghost {
     border-color: var(--border);
     color: var(--text);
@@ -334,6 +361,15 @@ nav.scrolled {
 
 .nav-links a:hover,
 .nav-links a.active {
+    color: var(--gold-light);
+}
+
+.nav-links a.nav-link-highlight {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.nav-links a.nav-link-highlight:hover {
     color: var(--gold-light);
 }
 
@@ -751,6 +787,91 @@ nav.scrolled {
 
 .video-cta {
     text-align: center;
+}
+
+/* ===================== MUSIC PACKS (ITCH.IO PROMO) ========== */
+.music-packs-section {
+    padding: 30px 0 70px;
+    position: relative;
+    scroll-margin-top: 70px;
+}
+
+.music-packs-card {
+    background: linear-gradient(135deg, rgba(198, 164, 92, 0.08) 0%, rgba(20, 20, 24, 0.85) 60%, rgba(24, 24, 29, 0.95) 100%);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius-lg);
+    padding: 48px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-packs-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 240px at 0% 0%, rgba(198, 164, 92, 0.12), transparent 70%);
+    pointer-events: none;
+}
+
+.music-packs-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 28px var(--gold-glow);
+}
+
+.music-packs-content {
+    max-width: 620px;
+    position: relative;
+    z-index: 1;
+}
+
+.kicker-itch {
+    color: var(--gold-light);
+    letter-spacing: 0.2em;
+}
+
+.music-packs-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.25;
+}
+
+.music-packs-desc {
+    font-size: 0.96rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.music-packs-action {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-packs-cta {
+    background: var(--gold);
+    color: #0B0B0D;
+    border-color: var(--gold);
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(198, 164, 92, 0.25);
+    gap: 10px;
+}
+
+.btn-packs-cta:hover {
+    background: var(--gold-light);
+    color: #0B0B0D;
+    border-color: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(198, 164, 92, 0.35);
 }
 
 /* ===================== COMMISSIONS ========================== */
@@ -1273,6 +1394,22 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .music-packs-card {
+        padding: 38px 32px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+    }
+
+    .music-packs-action {
+        width: 100%;
+    }
+
+    .btn-packs-cta {
+        width: 100%;
+        justify-content: center;
+    }
+
     /* Mobile nav */
     .nav-links {
         display: none;
@@ -1350,6 +1487,19 @@ footer {
 
     .video-grid {
         grid-template-columns: 1fr;
+    }
+
+    .music-packs-section {
+        padding: 15px 0 50px;
+    }
+
+    .music-packs-card {
+        padding: 30px 22px;
+    }
+
+    .cta-row .btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .workflow-timeline {

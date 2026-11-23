@@ -864,30 +864,49 @@
           <input type="hidden" name="access_key" value="c925d67d-a563-42f5-8c87-e5b2439199f0" />
           <input type="hidden" name="subject" value="New contact from cosmeleites.vercel.app" />
 
+          <p class="form-required-note" data-i18n="form.allRequired">All fields are required (*)</p>
+
           <div class="field">
-            <label for="cf-name" data-i18n="form.name"></label>
-            <input type="text" id="cf-name" name="name" required autocomplete="name" />
+            <label for="cf-name">
+              <span data-i18n="form.name"></span> <span class="req-star" aria-hidden="true">*</span>
+            </label>
+            <input type="text" id="cf-name" name="name" required aria-required="true" autocomplete="name" aria-describedby="cf-name-error" />
+            <span class="field-error" id="cf-name-error" role="alert" aria-live="polite"></span>
           </div>
           <div class="field">
-            <label for="cf-email" data-i18n="form.email"></label>
-            <input type="email" id="cf-email" name="email" required autocomplete="email" />
+            <label for="cf-email">
+              <span data-i18n="form.email"></span> <span class="req-star" aria-hidden="true">*</span>
+            </label>
+            <input type="email" id="cf-email" name="email" required aria-required="true" autocomplete="email" aria-describedby="cf-email-error" />
+            <span class="field-error" id="cf-email-error" role="alert" aria-live="polite"></span>
           </div>
           <div class="field">
-            <label for="cf-subject" data-i18n="form.subject"></label>
-            <select id="cf-subject" name="subject_type" required>
+            <label for="cf-subject">
+              <span data-i18n="form.subject"></span> <span class="req-star" aria-hidden="true">*</span>
+            </label>
+            <select id="cf-subject" name="subject_type" required aria-required="true" aria-describedby="cf-subject-error">
               <option value="" data-i18n="form.subjectPh"></option>
               <option value="soundtrack" data-i18n="form.opt1"></option>
               <option value="colaboracion" data-i18n="form.opt2"></option>
               <option value="clases" data-i18n="form.opt3"></option>
               <option value="otro" data-i18n="form.opt4"></option>
             </select>
+            <span class="field-error" id="cf-subject-error" role="alert" aria-live="polite"></span>
           </div>
           <div class="field">
-            <label for="cf-message" data-i18n="form.msg"></label>
-            <textarea id="cf-message" name="message" required></textarea>
+            <label for="cf-message">
+              <span data-i18n="form.msg"></span> <span class="req-star" aria-hidden="true">*</span>
+            </label>
+            <textarea id="cf-message" name="message" required aria-required="true" aria-describedby="cf-message-error"></textarea>
+            <span class="field-error" id="cf-message-error" role="alert" aria-live="polite"></span>
           </div>
 
-          <button type="submit" class="btn btn-gold btn-submit" data-i18n="form.send"></button>
+          <div class="submit-wrap is-disabled" id="submitWrap" tabindex="0" role="region" aria-label="Submit button container">
+            <button type="submit" class="btn btn-gold btn-submit" id="submitBtn" disabled data-i18n="form.send"></button>
+            <div class="btn-tooltip" id="submitTooltip" role="tooltip" aria-hidden="true" data-i18n="form.tooltip">
+              Please complete all required fields to send your message.
+            </div>
+          </div>
 
           <div class="form-ok" id="formOk" role="alert" aria-live="polite" data-i18n="form.ok"></div>
           <div class="form-err" id="formErr" role="alert" aria-live="polite"></div>
@@ -1090,6 +1109,10 @@
         "form.opt3": "Clases o consultoría", "form.opt4": "Otro",
         "form.msg": "Mensaje", "form.send": "Enviar mensaje",
         "form.ok": "¡Mensaje enviado! Gracias por escribir. Te respondo a la brevedad.",
+        "form.allRequired": "Todos los campos son obligatorios (*)",
+        "form.errRequired": "Este campo es obligatorio.",
+        "form.errEmail": "Por favor, ingresá una dirección de correo válida.",
+        "form.tooltip": "Completá todos los campos requeridos para enviar tu mensaje.",
 
         "footer.tagline": "Compositor de videojuegos",
         "footer.rights": "© 2026 Oscar Leites. Todos los derechos reservados."
@@ -1176,6 +1199,10 @@
         "form.opt3": "Lessons or consulting", "form.opt4": "Other",
         "form.msg": "Message", "form.send": "Send message",
         "form.ok": "Message sent! Thanks for reaching out. I'll reply soon.",
+        "form.allRequired": "All fields are required (*)",
+        "form.errRequired": "This field is required.",
+        "form.errEmail": "Please enter a valid email address.",
+        "form.tooltip": "Please complete all required fields to send your message.",
 
         "footer.tagline": "Video Game Composer",
         "footer.rights": "© 2026 Oscar Leites. All rights reserved."
@@ -1207,6 +1234,8 @@
         if (titleEl) titleEl.textContent = card.dataset[titleKey] || '';
         if (catEl) catEl.textContent = card.dataset[catKey] || '';
       });
+
+      window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: l } }));
     }
 
     document.getElementById('langBtn').addEventListener('click', () => setLang(lang === 'es' ? 'en' : 'es'));
@@ -1355,52 +1384,240 @@
     updateActiveNav();
 
     /* ============================================================
-       CONTACT FORM
+       CONTACT FORM VALIDATION & SUBMISSION
     ============================================================ */
-    document.getElementById('contactForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('button[type="submit"]');
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      const nameInput = document.getElementById('cf-name');
+      const emailInput = document.getElementById('cf-email');
+      const subjectSelect = document.getElementById('cf-subject');
+      const messageTextarea = document.getElementById('cf-message');
+      const submitBtn = document.getElementById('submitBtn');
+      const submitWrap = document.getElementById('submitWrap');
+      const submitTooltip = document.getElementById('submitTooltip');
       const formOk = document.getElementById('formOk');
       const formErr = document.getElementById('formErr');
-      const subjectSelect = document.getElementById('cf-subject');
-      const hiddenSubject = form.querySelector('input[name="subject"]');
+      const hiddenSubject = contactForm.querySelector('input[name="subject"]');
 
-      if (subjectSelect && subjectSelect.value && hiddenSubject) {
-        const optText = subjectSelect.options[subjectSelect.selectedIndex].text;
-        hiddenSubject.value = `[Portfolio] ${optText} - ${form.querySelector('#cf-name').value || 'New Inquiry'}`;
-      }
+      const nameErr = document.getElementById('cf-name-error');
+      const emailErr = document.getElementById('cf-email-error');
+      const subjectErr = document.getElementById('cf-subject-error');
+      const messageErr = document.getElementById('cf-message-error');
 
-      formOk.style.display = 'none';
-      formErr.style.display = 'none';
-      btn.disabled = true;
-      btn.textContent = lang === 'es' ? 'Enviando mensaje…' : 'Sending message…';
+      const touched = {
+        name: false,
+        email: false,
+        subject: false,
+        message: false
+      };
 
-      try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-        const result = await response.json();
-        if (response.ok) {
-          formOk.style.display = 'block';
-          form.reset();
-        } else {
-          formErr.textContent = result.message || (lang === 'es' ? 'Error al enviar.' : 'Error sending message.');
-          formErr.style.display = 'block';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      function checkFieldValidity(field) {
+        if (field === 'name') {
+          const val = (nameInput.value || '').trim();
+          return { valid: val.length > 0, errKey: val.length === 0 ? 'form.errRequired' : null };
         }
-      } catch {
-        formErr.textContent = lang === 'es'
-          ? 'Hubo un error al enviar. Por favor, intentá de nuevo.'
-          : 'There was an error sending the message. Please try again.';
-        formErr.style.display = 'block';
-      } finally {
-        btn.disabled = false;
-        setLang(lang); // restore button label
+        if (field === 'email') {
+          const val = (emailInput.value || '').trim();
+          if (val.length === 0) return { valid: false, errKey: 'form.errRequired' };
+          if (!emailRegex.test(val)) return { valid: false, errKey: 'form.errEmail' };
+          return { valid: true, errKey: null };
+        }
+        if (field === 'subject') {
+          const val = (subjectSelect.value || '').trim();
+          return { valid: val.length > 0, errKey: val.length === 0 ? 'form.errRequired' : null };
+        }
+        if (field === 'message') {
+          const val = (messageTextarea.value || '').trim();
+          return { valid: val.length > 0, errKey: val.length === 0 ? 'form.errRequired' : null };
+        }
+        return { valid: true, errKey: null };
       }
-    });
+
+      function updateFieldUI(field, inputEl, errEl) {
+        const result = checkFieldValidity(field);
+        if (result.valid) {
+          inputEl.classList.add('is-valid');
+          inputEl.classList.remove('is-invalid');
+          inputEl.setAttribute('aria-invalid', 'false');
+          errEl.textContent = '';
+          errEl.classList.remove('visible');
+        } else {
+          inputEl.classList.remove('is-valid');
+          if (touched[field]) {
+            inputEl.classList.add('is-invalid');
+            inputEl.setAttribute('aria-invalid', 'true');
+            errEl.textContent = I18N[lang][result.errKey] || '';
+            errEl.classList.add('visible');
+          } else {
+            inputEl.classList.remove('is-invalid');
+            inputEl.removeAttribute('aria-invalid');
+            errEl.textContent = '';
+            errEl.classList.remove('visible');
+          }
+        }
+        return result.valid;
+      }
+
+      function updateFormState() {
+        const isNameValid = updateFieldUI('name', nameInput, nameErr);
+        const isEmailValid = updateFieldUI('email', emailInput, emailErr);
+        const isSubjectValid = updateFieldUI('subject', subjectSelect, subjectErr);
+        const isMessageValid = updateFieldUI('message', messageTextarea, messageErr);
+
+        const isFormValid = isNameValid && isEmailValid && isSubjectValid && isMessageValid;
+
+        if (isFormValid) {
+          submitBtn.disabled = false;
+          submitWrap.classList.remove('is-disabled');
+          submitTooltip.style.display = 'none';
+          submitTooltip.setAttribute('aria-hidden', 'true');
+        } else {
+          submitBtn.disabled = true;
+          submitWrap.classList.add('is-disabled');
+          submitTooltip.style.display = '';
+          submitTooltip.setAttribute('aria-hidden', 'false');
+        }
+
+        return isFormValid;
+      }
+
+      // Attach input and blur listeners
+      [
+        { el: nameInput, key: 'name', err: nameErr },
+        { el: emailInput, key: 'email', err: emailErr },
+        { el: subjectSelect, key: 'subject', err: subjectErr },
+        { el: messageTextarea, key: 'message', err: messageErr }
+      ].forEach(({ el, key, err }) => {
+        el.addEventListener('blur', () => {
+          touched[key] = true;
+          updateFormState();
+        });
+        el.addEventListener('input', () => {
+          if (touched[key]) {
+            updateFieldUI(key, el, err);
+          }
+          // Always recalculate form-wide validity so button becomes ready as soon as valid
+          const isNameValid = checkFieldValidity('name').valid;
+          const isEmailValid = checkFieldValidity('email').valid;
+          const isSubjectValid = checkFieldValidity('subject').valid;
+          const isMessageValid = checkFieldValidity('message').valid;
+          const isAllValid = isNameValid && isEmailValid && isSubjectValid && isMessageValid;
+
+          if (isAllValid) {
+            submitBtn.disabled = false;
+            submitWrap.classList.remove('is-disabled');
+            submitTooltip.style.display = 'none';
+            submitTooltip.setAttribute('aria-hidden', 'true');
+          } else {
+            submitBtn.disabled = true;
+            submitWrap.classList.add('is-disabled');
+            submitTooltip.style.display = '';
+            submitTooltip.setAttribute('aria-hidden', 'false');
+          }
+        });
+        el.addEventListener('change', () => {
+          touched[key] = true;
+          updateFormState();
+        });
+      });
+
+      // Submit listener
+      let isSubmitting = false;
+
+      contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Mark all fields as touched
+        touched.name = true;
+        touched.email = true;
+        touched.subject = true;
+        touched.message = true;
+
+        const isFormValid = updateFormState();
+        if (!isFormValid) {
+          // Focus first invalid field
+          if (!checkFieldValidity('name').valid) nameInput.focus();
+          else if (!checkFieldValidity('email').valid) emailInput.focus();
+          else if (!checkFieldValidity('subject').valid) subjectSelect.focus();
+          else if (!checkFieldValidity('message').valid) messageTextarea.focus();
+          return;
+        }
+
+        if (isSubmitting) return; // Prevent duplicate submission
+        isSubmitting = true;
+
+        if (subjectSelect && subjectSelect.value && hiddenSubject) {
+          const optText = subjectSelect.options[subjectSelect.selectedIndex].text;
+          hiddenSubject.value = `[Portfolio] ${optText} - ${nameInput.value.trim() || 'New Inquiry'}`;
+        }
+
+        formOk.style.display = 'none';
+        formErr.style.display = 'none';
+        submitBtn.disabled = true;
+        submitWrap.classList.add('is-disabled');
+        submitBtn.textContent = lang === 'es' ? 'Enviando mensaje…' : 'Sending message…';
+
+        try {
+          const formData = new FormData(contactForm);
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+          const result = await response.json().catch(() => null);
+
+          if (response.ok && (!result || result.success !== false)) {
+            formOk.style.display = 'block';
+            contactForm.reset();
+            // Reset state
+            touched.name = false;
+            touched.email = false;
+            touched.subject = false;
+            touched.message = false;
+            [nameInput, emailInput, subjectSelect, messageTextarea].forEach(el => {
+              el.classList.remove('is-valid', 'is-invalid');
+              el.removeAttribute('aria-invalid');
+            });
+            [nameErr, emailErr, subjectErr, messageErr].forEach(el => {
+              el.textContent = '';
+              el.classList.remove('visible');
+            });
+            submitBtn.disabled = true;
+            submitWrap.classList.add('is-disabled');
+            submitTooltip.style.display = '';
+            submitTooltip.setAttribute('aria-hidden', 'false');
+          } else {
+            const defaultErrMsg = lang === 'es'
+              ? 'Hubo un error al enviar. Por favor, intentá de nuevo.'
+              : 'There was an error sending the message. Please try again.';
+            formErr.textContent = (result && result.message) ? result.message : defaultErrMsg;
+            formErr.style.display = 'block';
+            // User entered data preserved, restore ready state
+            updateFormState();
+          }
+        } catch {
+          formErr.textContent = lang === 'es'
+            ? 'Hubo un error al enviar. Por favor, intentá de nuevo.'
+            : 'There was an error sending the message. Please try again.';
+          formErr.style.display = 'block';
+          // User entered data preserved, restore ready state
+          updateFormState();
+        } finally {
+          isSubmitting = false;
+          submitBtn.textContent = I18N[lang]['form.send'];
+        }
+      });
+
+      // Update validation messages when language changes
+      window.addEventListener('languageChanged', () => {
+        updateFormState();
+      });
+
+      // Initial state evaluation
+      updateFormState();
+    }
 
     /* ============================================================
        DEVELOPER CREDIT POPOVER (BRAB)

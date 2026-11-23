@@ -960,7 +960,46 @@
           </svg>
         </a>
       </div>
-      <span class="footer-copy" data-i18n="footer.rights"></span>
+      <div class="footer-meta">
+        <span class="footer-copy" data-i18n="footer.rights"></span>
+        <div class="developer-credit">
+          <span class="credit-label">Designed &amp; developed by</span>
+          <div class="brab-wrapper">
+            <button class="brab-trigger" id="brabTrigger" aria-label="Developer details: BRAB" aria-haspopup="dialog"
+              aria-expanded="false">
+              <span class="brab-badge">BRAB</span>
+            </button>
+            <div class="brab-popover" id="brabPopover" role="dialog" aria-label="Developer information">
+              <div class="popover-header">
+                <span class="popover-title">BRAB</span>
+                <span class="popover-sub">Web Design &amp; Development</span>
+              </div>
+              <div class="popover-links">
+                <a href="mailto:bernardoarrechea@gmail.com" class="popover-link" title="Send email">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                  <span>bernardoarrechea@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/bernardo-arrechea" target="_blank" rel="noopener noreferrer"
+                  class="popover-link" title="LinkedIn Profile">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                  <span>LinkedIn Profile</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -1362,6 +1401,35 @@
         setLang(lang); // restore button label
       }
     });
+
+    /* ============================================================
+       DEVELOPER CREDIT POPOVER (BRAB)
+    ============================================================ */
+    const brabWrapper = document.querySelector('.brab-wrapper');
+    const brabTrigger = document.getElementById('brabTrigger');
+
+    if (brabWrapper && brabTrigger) {
+      brabTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = brabWrapper.classList.toggle('active');
+        brabTrigger.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!brabWrapper.contains(e.target)) {
+          brabWrapper.classList.remove('active');
+          brabTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && brabWrapper.classList.contains('active')) {
+          brabWrapper.classList.remove('active');
+          brabTrigger.setAttribute('aria-expanded', 'false');
+          brabTrigger.focus();
+        }
+      });
+    }
 
     /* ============================================================
        INIT

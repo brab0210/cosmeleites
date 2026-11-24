@@ -64,6 +64,7 @@
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
 }
 
 body {
@@ -72,7 +73,7 @@ body {
     color: var(--text);
     line-height: 1.65;
     transition: background 0.35s, color 0.35s;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 h1,
@@ -1767,7 +1768,7 @@ footer {
     }
 
     .brab-popover {
-        right: 50%;
+        right: 85%;
         transform: translate(50%, 8px);
     }
 
@@ -1816,7 +1817,7 @@ footer {
 
     .workflow-timeline {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 15px;
     }
 
     .workflow-step {
@@ -1840,7 +1841,7 @@ footer {
     }
 
     .workflow-step-icon {
-        margin-bottom: 0;
+        margin: -5px;
         flex-shrink: 0;
     }
 
@@ -1850,6 +1851,7 @@ footer {
 
     .workflow-step-content {
         text-align: left;
+        margin-top: 5px;
     }
 
     .testi-grid {
